@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-10-25T00:52:02 IST" name="Default suite" finished-at="2022-10-25T00:52:48 IST" duration-ms="45568">
+  <suite started-at="2022-10-25T12:38:58 IST" name="Default suite" finished-at="2022-10-25T12:39:40 IST" duration-ms="42012">
     <groups>
     </groups>
-    <test started-at="2022-10-25T00:52:02 IST" name="Default test" finished-at="2022-10-25T00:52:48 IST" duration-ms="45568">
+    <test started-at="2022-10-25T12:38:58 IST" name="Default test" finished-at="2022-10-25T12:39:40 IST" duration-ms="42012">
       <class name="com.fulcreative.task.Trello">
-        <test-method is-config="true" signature="initBrowser()[pri:0, instance:com.fulcreative.task.Trello@7692d9cc]" started-at="2022-10-25T00:52:02 IST" name="initBrowser" finished-at="2022-10-25T00:52:04 IST" duration-ms="1606" status="PASS">
+        <test-method is-config="true" signature="initBrowser()[pri:0, instance:com.fulcreative.task.Trello@7692d9cc]" started-at="2022-10-25T12:38:58 IST" name="initBrowser" finished-at="2022-10-25T12:39:00 IST" duration-ms="2575" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initBrowser -->
-        <test-method signature="TestFlow()[pri:0, instance:com.fulcreative.task.Trello@7692d9cc]" started-at="2022-10-25T00:52:04 IST" name="TestFlow" finished-at="2022-10-25T00:52:48 IST" duration-ms="43885" status="PASS">
+        <test-method signature="testFlow()[pri:0, instance:com.fulcreative.task.Trello@7692d9cc]" started-at="2022-10-25T12:39:00 IST" name="testFlow" finished-at="2022-10-25T12:39:39 IST" duration-ms="39301" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TestFlow -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.fulcreative.task.Trello@7692d9cc]" started-at="2022-10-25T00:52:48 IST" name="tearDown" finished-at="2022-10-25T00:52:48 IST" duration-ms="3" status="PASS">
+        </test-method> <!-- testFlow -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.fulcreative.task.Trello@7692d9cc]" started-at="2022-10-25T12:39:39 IST" name="tearDown" finished-at="2022-10-25T12:39:40 IST" duration-ms="40" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

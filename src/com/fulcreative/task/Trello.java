@@ -40,7 +40,7 @@ public class Trello {
 		driver.manage().window().maximize();
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		
 
 	}
 
@@ -55,6 +55,7 @@ public class Trello {
 		WebElement loginBtn = driver.findElement(By.linkText("Log in"));
 		loginBtn.click();
 
+		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		WebElement emailIdButton = driver
 				.findElement(By.xpath("//span[@data-analytics-button='loginWithGmailButton']"));
 		emailIdButton.click();
@@ -62,6 +63,7 @@ public class Trello {
 		Thread.sleep(5000); // Not recommended for good practice, But used for flow Execution
 							// understandability
 
+		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		//Creating a new board
 		WebElement createNewBoardBtn = driver.findElement(By.xpath("//li[@data-test-id='create-board-tile']//div"));
 		wait.until(ExpectedConditions.elementToBeClickable(createNewBoardBtn));
@@ -76,8 +78,7 @@ public class Trello {
 		WebElement createBtn = driver.findElement(By.xpath("//button[contains(text(),'Create')]"));
 		createBtn.click();
 
-		Thread.sleep(7000); // Not recommended for good practice, But used for flow Execution
-							// understandability
+		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
 		//Creating a List A
 		WebElement listA = driver.findElement(By.xpath("//textarea[@aria-label='To Do']"));
