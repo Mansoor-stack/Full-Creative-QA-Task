@@ -3,7 +3,6 @@ package com.fulcreative.task;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,14 +15,18 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.pageObjects.PageObjects;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Trello {
 
 	WebDriver driver;
+	PageObjects pageObjects;
 
 	@BeforeClass
 	public void initBrowser() {
+		pageObjects = new PageObjects(driver);
 		WebDriverManager.chromedriver().setup();
 
 //		System.setProperty("webdriver.chrome.driver", "/Users/mansoor/eclipse-workspace/SeleniumBrushUp2022/src/Drivers/chromedriver");
@@ -40,7 +43,6 @@ public class Trello {
 		driver.manage().window().maximize();
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-		
 
 	}
 
@@ -56,15 +58,18 @@ public class Trello {
 		loginBtn.click();
 
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-		WebElement emailIdButton = driver
-				.findElement(By.xpath("//span[@data-analytics-button='loginWithGmailButton']"));
-		emailIdButton.click();
+
+		pageObjects.clickEmaiIdButton(); //Page Object Model Framework 
+		
+//		WebElement emailIdButton = driver
+//				.findElement(By.xpath("//span[@data-analytics-button='loginWithGmailButton']"));
+//		emailIdButton.click();
 
 		Thread.sleep(5000); // Not recommended for good practice, But used for flow Execution
 							// understandability
 
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-		//Creating a new board
+		// Creating a new board
 		WebElement createNewBoardBtn = driver.findElement(By.xpath("//li[@data-test-id='create-board-tile']//div"));
 		wait.until(ExpectedConditions.elementToBeClickable(createNewBoardBtn));
 		createNewBoardBtn.click();
@@ -80,7 +85,7 @@ public class Trello {
 
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
-		//Creating a List A
+		// Creating a List
 		WebElement listA = driver.findElement(By.xpath("//textarea[@aria-label='To Do']"));
 		listA.clear();
 		wait.until(ExpectedConditions.elementToBeClickable(listA));
@@ -91,7 +96,7 @@ public class Trello {
 //		WebElement addListBtn = driver.findElement(By.xpath("//input[@value='Add list']"));
 //		addListBtn.click();
 
-		//Creating a List B
+		// Creating a List B
 		WebElement listB = driver.findElement(By.xpath("//textarea[@aria-label='Doing']"));
 		listB.clear();
 		wait.until(ExpectedConditions.elementToBeClickable(listB));
@@ -106,7 +111,7 @@ public class Trello {
 //				"//body[1]/div[1]/div[2]/div[1]/div[1]/main[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[3]/div[2]/div[1]/div[1]/div[3]/a[1]/span[2]"));
 //		addACard.click();
 
-		//Creating a card
+		// Creating a card
 		WebElement cardTextEnter = driver
 				.findElement(By.xpath("//textarea[@placeholder='Enter a title for this card…']"));
 		cardTextEnter.sendKeys("Hello World");
@@ -116,7 +121,7 @@ public class Trello {
 		Thread.sleep(3000); // Not recommended for good practice, But used for flow Execution
 							// understandability
 
-		//Drag and Drop a card from List A to List B
+		// Drag and Drop a card from List A to List B
 		WebElement listA_sourceCard = driver.findElement(By.xpath("//span[@class='list-card-title js-card-name']"));
 
 		WebElement listB_DestinationCard = driver.findElement(By.xpath(
@@ -124,18 +129,20 @@ public class Trello {
 
 		builder.dragAndDrop(listA_sourceCard, listB_DestinationCard).build().perform();
 
-		//Getting the x and y coordinates of the card that moved from List A to List B 
+		// Getting the x and y coordinates of the card that moved from List A to List B
 		driver.navigate().refresh();
 		Thread.sleep(3000);
 		wait.until(
 				ExpectedConditions.presenceOfElementLocated(By.xpath("//span[@class='list-card-title js-card-name']")));
 
-		/*Faced stale Element exception while trying to get co ordinates of card after moved from List A to List B
-		 * As a workaround, So tried to Re locate the element xyCoOrdinatesElement after moving from List A to List B
-		 * Handled the exception in order to avoid interruption during execution 
+		/*
+		 * Faced stale Element exception while trying to get co ordinates of card after
+		 * moved from List A to List B As a workaround, So tried to Re locate the
+		 * element xyCoOrdinatesElement after moving from List A to List B Handled the
+		 * exception in order to avoid interruption during execution
 		 * 
-		 * */
-		
+		 */
+
 		WebElement xyCoOrdinatesElement = driver.findElement(By.xpath("//span[@class='list-card-title js-card-name']"));
 
 		try {
@@ -157,12 +164,12 @@ public class Trello {
 
 		WebElement logOutBtn2 = driver.findElement(By.xpath("//button[@id='logout-submit']"));
 		logOutBtn2.click();
-	
+
 	}
 
 	@AfterClass
 	public void tearDown() {
-		 driver.close();
+		driver.close();
 
 	}
 
