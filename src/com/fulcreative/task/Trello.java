@@ -45,7 +45,7 @@ public class Trello {
 	}
 
 	@Test
-	public void TestFlow() throws InterruptedException {
+	public void testFlow() throws InterruptedException {
 		Actions builder = new Actions(driver);
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 
