@@ -13,12 +13,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import com.ItestListeners.MyListeners;
 import com.pageObjects.PageObjects;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+@Listeners(MyListeners.class)
 public class Trello {
 
 	WebDriver driver;
@@ -59,8 +62,8 @@ public class Trello {
 
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 
-		pageObjects.clickEmaiIdButton(); //Page Object Model Framework 
-		
+		pageObjects.clickEmaiIdButton(); // Page Object Model Framework
+
 //		WebElement emailIdButton = driver
 //				.findElement(By.xpath("//span[@data-analytics-button='loginWithGmailButton']"));
 //		emailIdButton.click();
@@ -118,6 +121,7 @@ public class Trello {
 
 		WebElement addCardBtn = driver.findElement(By.xpath("//input[@value='Add card']"));
 		addCardBtn.click();
+
 		Thread.sleep(3000); // Not recommended for good practice, But used for flow Execution
 							// understandability
 
